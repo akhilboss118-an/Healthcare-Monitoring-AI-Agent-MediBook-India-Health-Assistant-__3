@@ -1,0 +1,79 @@
+class AyurvedicModule:
+    def __init__(self):
+        # Local database of common Ayurvedic herbs and treatments
+        self.ayurvedic_db = {
+            "ashwagandha": {
+                "benefits": "Reduces stress, anxiety, and improves energy levels.",
+                "dosage": "1/2 teaspoon (approx. 3g) twice a day with warm milk or water.",
+                "precautions": "Avoid during pregnancy or if taking immunosuppressants."
+            },
+            "tulsi": {
+                "benefits": "Supports respiratory health, boosts immunity, and relieves cough.",
+                "dosage": "5-10 ml of juice or 1-2 tablets daily.",
+                "precautions": "May lower blood sugar; monitor if diabetic."
+            },
+            "turmeric": {
+                "benefits": "Powerful anti-inflammatory and antioxidant properties.",
+                "dosage": "1-2 grams daily with food or mixed in warm milk (Golden Milk).",
+                "precautions": "High doses may interfere with blood thinners."
+            }
+        }
+
+    def get_herb_info(self, herb_name: str) -> dict:
+        """Fetch information for a specific Ayurvedic herb."""
+        herb = herb_name.lower().strip()
+        return self.ayurvedic_db.get(herb, {"error": "Herb not found in current database."})
+
+    def search_by_ailment(self, ailment: str) -> list:
+        """Find recommended herbs for a given ailment."""
+        query = ailment.lower()
+        recommendations = []
+        for herb, details in self.ayurvedic_db.items():
+            if query in details["benefits"].lower():
+                recommendations.append({"herb": herb.capitalize(), "details": details})
+        
+        return recommendations if recommendations else [{"message": "No specific Ayurvedic mapping found for this ailment."}]
+
+# Quick test usage:
+ayur_system = AyurvedicModule()
+print(ayur_system.get_herb_info("tulsi"))
+
+class AyurvedicModule:
+    def __init__(self):
+        # Local database of common Ayurvedic herbs and treatments
+        self.ayurvedic_db = {
+            "ashwagandha": {
+                "benefits": "Reduces stress, anxiety, and improves energy levels.",
+                "dosage": "1/2 teaspoon (approx. 3g) twice a day with warm milk or water.",
+                "precautions": "Avoid during pregnancy or if taking immunosuppressants."
+            },
+            "tulsi": {
+                "benefits": "Supports respiratory health, boosts immunity, and relieves cough.",
+                "dosage": "5-10 ml of juice or 1-2 tablets daily.",
+                "precautions": "May lower blood sugar; monitor if diabetic."
+            },
+            "turmeric": {
+                "benefits": "Powerful anti-inflammatory and antioxidant properties.",
+                "dosage": "1-2 grams daily with food or mixed in warm milk (Golden Milk).",
+                "precautions": "High doses may interfere with blood thinners."
+            }
+        }
+
+    def get_herb_info(self, herb_name: str) -> dict:
+        """Fetch information for a specific Ayurvedic herb."""
+        herb = herb_name.lower().strip()
+        return self.ayurvedic_db.get(herb, {"error": "Herb not found in current database."})
+
+    def search_by_ailment(self, ailment: str) -> list:
+        """Find recommended herbs for a given ailment."""
+        query = ailment.lower()
+        recommendations = []
+        for herb, details in self.ayurvedic_db.items():
+            if query in details["benefits"].lower():
+                recommendations.append({"herb": herb.capitalize(), "details": details})
+        
+        return recommendations if recommendations else [{"message": "No specific Ayurvedic mapping found for this ailment."}]
+
+# Quick test usage:
+ayur_system = AyurvedicModule()
+print(ayur_system.get_herb_info("tulsi"))
